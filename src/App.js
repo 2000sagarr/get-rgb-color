@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Color from "./components/Color";
+import ColorForm from "./components/ColorForm";
 
 function App() {
+  const [red, setRedValue] = useState(0);
+  const [green, setGreenValue] = useState(0);
+  const [blue, setBlueValue] = useState(0);
+
+  const getColor = (redColor, greenColor, blueColor) => {
+    setRedValue(redColor);
+    setGreenValue(greenColor);
+    setBlueValue(blueColor);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>RGC Color</h1>
+      <ColorForm getColor={getColor} />
+      <h3>
+        RGB( {red}, {green}, {blue} )
+      </h3>
+      <Color red={red} green={green} blue={blue} />
     </div>
   );
 }
